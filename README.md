@@ -1,8 +1,30 @@
-# ubuntu-web
-Ubuntu Desktop Web Browser Accessible Docker Image
+<img src="icon.png" min-width="150px" max-width="150px" width="150px" align="right" alt="">
+
+# UBUNTU-WEB.
+
+UBUNTU DESKTOP WEB BROWSER ACCESSIBLE DOCKER IMAGE. APLICATIVO BY DEVELOPER DAVIDSONBPE...
+
+----------
+
+
+### INSTALL - LINUX / MACOS / WSL2
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/install.sh | bash
+```
+--------
+
+### COMANDO INSTALL
+
+```bash
+chmod +x install.sh && ./install.sh
+```
+--------
 
 ## ScreenShot
 ![screenshot](screenshot.png)
+
+--------
 
 ## Como executar
 
@@ -23,7 +45,7 @@ Ubuntu Desktop Web Browser Accessible Docker Image
 
 ## Como acessar
 
-- Acesso web VNC: `http://localhost:6080`
+- Acesso web VNC: `http://localhost:6080/vnc.html`
 - VNC direto: `localhost:5901`
 
 ## Observação
