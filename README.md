@@ -7,6 +7,22 @@ XUBUNTU XFCE DESKTOP WEB BROWSER ACESSÍVEL DOCKER IMAGE. APLICATIVO BY DEVELOPE
 ----------
 
 
+### GIT CLONE 
+
+```bash
+git clone https://github.com/redek-dp/ubuntuweb.git
+```
+
+--------
+
+### CD LOCAL PASTA
+
+```bash
+cd ubuntuweb
+```
+
+--------
+
 ### INSTALL - LINUX / MACOS / WSL2
 
 ```bash
@@ -30,7 +46,7 @@ chmod +x install.sh && ./install.sh
 
 1. Abra um terminal na pasta do projeto:
    ```bash
-   cd /workspaces/ubuntuweb
+   cd ubuntuweb
    ```
 
 2. Construa a imagem Docker:
