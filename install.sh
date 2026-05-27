@@ -12,7 +12,7 @@ cat << "EOF"
 █  █  █     █   █ █     █  █       █   █ █   █ 
 █   █ █████ ████  █████ █   █      ████  ████ 
 
-            ISTALLER REDEK-DB
+            ISTALLER UBUNTU-WEB
 
 EOF
 
