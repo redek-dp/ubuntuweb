@@ -10,8 +10,7 @@ RUN echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozilla-f
 RUN echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/mozilla-firefox
 RUN echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:jammy";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
 RUN apt update -y && apt install -y firefox
-RUN apt update -y && apt install -y xubuntu-icon-theme
-RUN apt update -y && apt install -y node
+RUN apt update -y && apt install -y xubuntu-icon-theme-dark
 RUN apt update -y && apt install -y obs-studio
 RUN touch /root/.Xauthority
 EXPOSE 5901
