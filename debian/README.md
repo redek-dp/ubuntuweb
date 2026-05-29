@@ -1,4 +1,4 @@
-<img src="icon.png" min-width="150px" max-width="150px" width="150px" align="right" alt="">
+<img src="https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/debian/icon.png" min-width="150px" max-width="150px" width="150px" align="right" alt="">
 
 # DEBIAN-WEB.
 
@@ -21,7 +21,7 @@ chmod +x install.sh && ./install.sh
 --------
 
 ## ScreenShot
-![screenshot](screenshots.png)
+![screenshot](https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/debian/screenshots.png)
 
 --------
 

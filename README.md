@@ -1,4 +1,4 @@
-<img src="icon.png" min-width="150px" max-width="150px" width="150px" align="right" alt="">
+<img src="https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/icon.png" min-width="150px" max-width="150px" width="150px" align="right" alt="">
 
 # UBUNTU-WEB.
 
@@ -38,7 +38,7 @@ chmod +x install.sh && ./install.sh
 --------
 
 ## ScreenShot
-![screenshot](screenshot.png)
+![screenshot](https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/screenshot.png)
 
 --------
 
