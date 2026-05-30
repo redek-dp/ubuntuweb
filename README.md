@@ -80,7 +80,7 @@ Se quiser, posso também te ajudar a rodar só a interface web (`noVNC`) ou a aj
 
 ### DOAR COM
 
-[![DOAR COM](https://img.shields.io/badge/PagBank-1bb99a?style=for-the-badge&logo=PagBank&logoColor=white)](https://pag.ae/7Y3uUnhg8)
+[![DOAR COM](https://img.shields.io/badge/DOAR%20COM-PagBank-blue.svg?logo=pagseguro&style=for-the-badge&logoColor=f5f5f5)](https://pag.ae/7Y3uUnhg8)
 
 --------
 
