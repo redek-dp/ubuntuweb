@@ -51,12 +51,12 @@ chmod +x install.sh && ./install.sh
 
 2. Construa a imagem Docker:
    ```bash
-   docker build -t ubuntuweb .
+   docker build -t ubuntu-vnc .
    ```
 
 3. Execute o container:
    ```bash
-   docker run -d --name ubuntuweb -p 6080:6080 -p 5901:5901 ubuntuweb
+   docker run -d \ --name ubuntu-vnc \ -p 5901:5901 \ -p 6080:6080 \ ubuntu-vnc
    ```
 
 ## Como acessar
@@ -70,8 +70,8 @@ chmod +x install.sh && ./install.sh
 - Se você precisar usar `sudo` para Docker, adicione antes dos comandos:
 
   ```bash
-  sudo docker build -t ubuntuweb .
-  sudo docker run -d --name ubuntuweb -p 6080:6080 -p 5901:5901 ubuntuweb
+  sudo docker build -t ubuntu-vnc .
+  sudo docker run -d \ --name ubuntu-vnc \ -p 5901:5901 \ -p 6080:6080 \ ubuntu-vnc
   ```
 
 Se quiser, posso também te ajudar a rodar só a interface web (`noVNC`) ou a ajustar uma senha VNC.
@@ -104,8 +104,6 @@ Se quiser, posso também te ajudar a rodar só a interface web (`noVNC`) ou a aj
 
 <br />
 
-
-<img src="https://devanalytics.vercel.app/p/m8voKzwna" min-width="1px" max-width="1px" width="1px">
 
 [youtube]: https://www.youtube.com/channel/UCHqvw9v2Fp6o006lUskoigg/
 [instagram]: https://www.instagram.com/davidsonbpe/
