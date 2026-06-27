@@ -1,18 +1,67 @@
 FROM --platform=linux/amd64 ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update -y && apt install --no-install-recommends -y xfce4 xfce4-goodies tigervnc-standalone-server novnc websockify sudo xterm init systemd snapd vim net-tools curl wget git tzdata
-RUN apt update -y && apt install -y dbus-x11 x11-utils x11-xserver-utils x11-apps
-RUN apt install software-properties-common -y
-RUN add-apt-repository ppa:mozillateam/ppa -y
-RUN echo 'Package: *' >> /etc/apt/preferences.d/mozilla-firefox
-RUN echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozilla-firefox
-RUN echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/mozilla-firefox
-RUN echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:jammy";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
-RUN apt update -y && apt install -y firefox
-RUN apt update -y && apt install -y xubuntu-icon-theme
-RUN apt update -y && apt install -y obs-studio
-RUN touch /root/.Xauthority
-EXPOSE 5901
-EXPOSE 6080
-CMD bash -c "vncserver -localhost no -SecurityTypes None -geometry 800x600 --I-KNOW-THIS-IS-INSECURE && openssl req -new -subj "/C=JP" -x509 -days 365 -nodes -out self.pem -keyout self.pem && websockify -D --web=/usr/share/novnc/ --cert=self.pem 6080 localhost:5901 && tail -f /dev/null"
+ENV DISPLAY=:1
+ENV VNC_PORT=5901
+ENV NOVNC_PORT=6080
+ENV VNC_RESOLUTION=1920x1080
+ENV VNC_DEPTH=24
+
+ARG USERNAME=admin
+ARG PASSWORD=123456
+
+RUN apt-get update && apt-get install -y \
+    supervisor \
+    xfce4 \
+    xfce4-goodies \
+    dbus-x11 \
+    x11-xserver-utils \
+    x11-apps \
+    tigervnc-standalone-server \
+    novnc \
+    websockify \
+    firefox \
+    xterm \
+    sudo \
+    curl \
+    wget \
+    git \
+    vim \
+    net-tools \
+    unzip \
+    zip \
+    openssl \
+    ca-certificates \
+    pulseaudio \
+    pavucontrol \
+    ffmpeg \
+    fonts-dejavu \
+    locales \
+    tzdata \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN locale-gen en_US.UTF-8
+
+RUN useradd -m -s /bin/bash ${USERNAME} \
+ && echo "${USERNAME}:${PASSWORD}" | chpasswd \
+ && usermod -aG sudo ${USERNAME} \
+ && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER ${USERNAME}
+WORKDIR /home/${USERNAME}
+
+RUN mkdir -p ~/.vnc
+
+RUN printf "#!/bin/bash\nstartxfce4\n" > ~/.vnc/xstartup && \
+    chmod +x ~/.vnc/xstartup
+
+COPY start.sh /start.sh
+
+USER root
+
+RUN chmod +x /start.sh
+
+EXPOSE 5901 6080
+
+CMD ["/start.sh"]
