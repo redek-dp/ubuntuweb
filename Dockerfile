@@ -2,44 +2,65 @@ FROM --platform=linux/amd64 ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Usuário e senha
-ENV USERNAME=devcom
-ENV PASSWORD=d123456
+# Usuário
+ENV USERNAME=admin
+ENV PASSWORD=123456
 
-RUN apt update -y && apt install --no-install-recommends -y \
-    xfce4 xfce4-goodies \
+# Atualização
+RUN apt-get update && apt-get upgrade -y
+
+# Pacotes
+RUN apt-get install -y \
+    xfce4 \
+    xfce4-goodies \
     tigervnc-standalone-server \
-    novnc websockify sudo \
-    xterm init systemd snapd \
-    vim net-tools curl wget git tzdata \
-    dbus-x11 x11-utils x11-xserver-utils x11-apps \
-    software-properties-common
+    tigervnc-common \
+    novnc \
+    websockify \
+    xterm \
+    dbus-x11 \
+    x11-xserver-utils \
+    x11-apps \
+    firefox \
+    obs-studio \
+    xubuntu-icon-theme \
+    sudo \
+    curl \
+    wget \
+    git \
+    net-tools \
+    vim \
+    openssl \
+    ca-certificates \
+    tzdata
 
-RUN add-apt-repository ppa:mozillateam/ppa -y
-
-RUN echo 'Package: *' >> /etc/apt/preferences.d/mozilla-firefox && \
-    echo 'Pin: release o=LP-PPA-mozillateam' >> /etc/apt/preferences.d/mozilla-firefox && \
-    echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/mozilla-firefox
-
-RUN echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:jammy";' \
-    > /etc/apt/apt.conf.d/51unattended-upgrades-firefox
-
-RUN apt update && \
-    apt install -y firefox xubuntu-icon-theme obs-studio
+# Limpeza
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 
 # Criar usuário
-RUN useradd -m -s /bin/bash $USERNAME && \
-    echo "$USERNAME:$PASSWORD" | chpasswd && \
-    usermod -aG sudo $USERNAME
+RUN useradd -m -s /bin/bash ${USERNAME}
 
-USER $USERNAME
-WORKDIR /home/$USERNAME
+RUN echo "${USERNAME}:${PASSWORD}" | chpasswd
 
+RUN usermod -aG sudo ${USERNAME}
+
+USER ${USERNAME}
+
+WORKDIR /home/${USERNAME}
+
+# Diretórios
 RUN mkdir -p ~/.vnc
 
 # Criar senha do VNC
-RUN echo "$PASSWORD" | vncpasswd -f > ~/.vnc/passwd && \
-    chmod 600 ~/.vnc/passwd
+RUN printf "%s\n%s\nn\n" "${PASSWORD}" "${PASSWORD}" | vncpasswd
+
+# xstartup
+RUN echo '#!/bin/sh' > ~/.vnc/xstartup && \
+    echo 'unset SESSION_MANAGER' >> ~/.vnc/xstartup && \
+    echo 'unset DBUS_SESSION_BUS_ADDRESS' >> ~/.vnc/xstartup && \
+    echo 'startxfce4 &' >> ~/.vnc/xstartup && \
+    chmod +x ~/.vnc/xstartup
 
 RUN touch ~/.Xauthority
 
@@ -49,9 +70,18 @@ EXPOSE 6080
 CMD bash -c '\
 vncserver :1 \
 -geometry 1280x720 \
--rfbauth ~/.vnc/passwd && \
-openssl req -new -subj "/C=JP" -x509 -days 365 -nodes \
--out self.pem -keyout self.pem && \
-websockify -D --web=/usr/share/novnc/ \
---cert=self.pem 6080 localhost:5901 && \
+-depth 24 && \
+openssl req \
+-new \
+-x509 \
+-days 365 \
+-nodes \
+-subj "/CN=localhost" \
+-out /home/'"${USERNAME}"'/self.pem \
+-keyout /home/'"${USERNAME}"'/self.pem && \
+websockify \
+--web=/usr/share/novnc \
+--cert=/home/'"${USERNAME}"'/self.pem \
+6080 \
+localhost:5901 && \
 tail -f /dev/null'
