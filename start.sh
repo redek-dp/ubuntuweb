@@ -11,7 +11,7 @@ chmod 600 ${USER_HOME}/.vnc/passwd
 chown -R admin:admin ${USER_HOME}/.vnc
 
 sudo -u admin vncserver :1 \
-    -geometry 800x600 \
+    -geometry 900x600 \
     -depth 24 \
     -rfbauth ${USER_HOME}/.vnc/passwd
 
@@ -31,3 +31,5 @@ websockify \
 --cert=/cert.pem \
 6080 \
 localhost:5901
+
+sudo snap install firefox
