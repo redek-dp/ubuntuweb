@@ -41,6 +41,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y firefox
+
 RUN locale-gen en_US.UTF-8
 
 RUN useradd -m -s /bin/bash ${USERNAME} \
