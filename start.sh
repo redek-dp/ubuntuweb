@@ -11,7 +11,7 @@ chmod 600 ${USER_HOME}/.vnc/passwd
 chown -R admin:admin ${USER_HOME}/.vnc
 
 sudo -u admin vncserver :1 \
-    -geometry 1920x1080 \
+    -geometry 800x600 \
     -depth 24 \
     -rfbauth ${USER_HOME}/.vnc/passwd
 
