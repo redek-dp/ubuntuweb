@@ -11,29 +11,6 @@ ARG USERNAME=admin
 ARG PASSWORD=123456
 
 RUN apt-get update && apt-get install -y \
-    wget \
-    bzip2 \
-    libgtk-3-0 \
-    libdbus-glib-1-2 \
-    libasound2 \
-    libx11-xcb1 \
-    libxt6 \
-    libxrender1 \
-    libxrandr2 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxfixes3 \
-    libxkbcommon0 \
-    libnss3 \
-    libxss1
-
-RUN wget -O /tmp/firefox.tar.bz2 \
-    "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=pt-BR" && \
-    tar -xjf /tmp/firefox.tar.bz2 -C /opt && \
-    ln -s /opt/firefox/firefox /usr/local/bin/firefox && \
-    rm /tmp/firefox.tar.bz2
-
-RUN apt-get update && apt-get install -y \
     supervisor \
     xfce4 \
     xfce4-goodies \
