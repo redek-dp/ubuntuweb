@@ -38,7 +38,7 @@ chmod +x install.sh && ./install.sh
 --------
 
 ## ScreenShot
-![screenshot](https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/screenshot.jpg)
 
 --------
 
