@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     websockify \
     xterm \
     sudo \
+    nano \
     curl \
     wget \
     git \

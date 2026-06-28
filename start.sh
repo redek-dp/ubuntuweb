@@ -33,3 +33,9 @@ websockify \
 localhost:5901
 
 sudo apt update && sudo apt install firefox
+sudo rm /etc/apt/preferences.d/mozilla-firefox
+sudo printf "Package: firefox*\nPin: release o=LP-PPA-mozillateam\nPin-Priority: 1001\n\nPackage: firefox*\nPin: release o=Ubuntu*\nPin-Priority: -1\n" | sudo tee /etc/apt/preferences.d/mozilla-firefox
+sudo apt update
+apt-cache policy firefox
+sudo apt install --reinstall firefox
+
