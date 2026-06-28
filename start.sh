@@ -32,4 +32,4 @@ websockify \
 6080 \
 localhost:5901
 
-sudo snap install firefox
+sudo apt update && sudo apt install firefox
