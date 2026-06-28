@@ -41,6 +41,19 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y wget gpg ca-certificates
+RUN install -d -m 0755 /etc/apt/keyrings
+RUN wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | \
+    gpg --dearmor > /etc/apt/keyrings/packages.mozilla.gpg
+
+RUN echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.gpg] https://packages.mozilla.org/apt mozilla main" \
+    > /etc/apt/sources.list.d/mozilla.list
+
+RUN printf "Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n" \
+    > /etc/apt/preferences.d/mozilla
+
+RUN apt-get update && apt-get install -y firefox
+
 RUN locale-gen en_US.UTF-8
 
 RUN useradd -m -s /bin/bash ${USERNAME} \
