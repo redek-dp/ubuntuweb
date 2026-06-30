@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV DISPLAY=:1
 ENV VNC_PORT=5901
 ENV NOVNC_PORT=6080
-ENV VNC_RESOLUTION=900x600
+ENV VNC_RESOLUTION=1200x600
 ENV VNC_DEPTH=24
 
 ARG USERNAME=admin
@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     git \
     vim \
+    nodejs \
     net-tools \
     unzip \
     zip \
