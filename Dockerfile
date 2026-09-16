@@ -28,6 +28,8 @@ RUN apt-get update && apt-get install -y \
     git \
     vim \
     nodejs \
+    npm \
+    python3 \
     net-tools \
     unzip \
     zip \
