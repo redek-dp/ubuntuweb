@@ -84,8 +84,6 @@ Se quiser, posso também te ajudar a rodar só a interface web (`noVNC`) ou a aj
 
 --------
 
-<br />
-
 ## CONECTE-SE COM NÓS:
 
 [<img height="30" src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="davidsonbpe | YouTube" />][youtube]
