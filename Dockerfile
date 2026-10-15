@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     zip \
     openssl \
+    gdebi \
     ca-certificates \
     pulseaudio \
     pavucontrol \
