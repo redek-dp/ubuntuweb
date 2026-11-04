@@ -1,0 +1,27 @@
+Vou criar um `restart.sh` na raiz que reinicia o container `ubuntu-vnc`, informa caso o Docker ou o container não estejam disponíveis e mostra o endereço da interface quando der certo. Primeiro vou confirmar que o nome do script ainda não existe e manter a orientação alinhada aos scripts do projeto.
+
+Searched for files matching `serv` · `*restart*`, no matches
+
+Read 
+
+A configuração confirma que o container tem esse nome e o instalador o cria com as portas esperadas. Vou adicionar um script pequeno e executável; ele reinicia o container existente e dá uma mensagem clara se não conseguir acessar o Docker ou se o container ainda não foi criado.
+
+Generating patch (26 lines) in 
+
+
+```
+
+```
+
+
+Ran terminal command:  chmod +x restart.sh && bash -n restart.sh && ./restart.sh && docker inspect --format='{{.State.Status}}' ubuntu-vnc
+
+Criei o script `restart.sh`. Para reiniciar o projeto, execute na pasta do repositório:
+
+```bash
+./restart.sh
+```
+
+Ele reinicia o container `ubuntu-vnc` e avisa se o Docker não estiver acessível ou se o container não existir. Testei o script: o container ficou ativo.
+
+Fez alterações.

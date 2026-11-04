@@ -37,6 +37,13 @@ chmod +x install.sh && ./install.sh
 ```
 --------
 
+### COMANDO RESTART
+
+```bash
+chmod +x restart.sh && ./restart.sh
+```
+--------
+
 ## ScreenShot
 ![screenshot](https://raw.githubusercontent.com/redek-dp/ubuntuweb/main/screenshot.jpg)
 
